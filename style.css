@@ -1,0 +1,28 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+.container{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.flex-btn{
+    display: flex;
+    justify-content: center;
+}
+.btn-user{
+    margin: 10px;
+}
+
+.form-connexion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.form-group{
+    margin: 10px 0;
+}
