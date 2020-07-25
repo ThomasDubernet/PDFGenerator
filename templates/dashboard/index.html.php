@@ -1,4 +1,6 @@
-<?php $user = unserialize($user); ?>
+<?php
+    $user = unserialize($user);
+?>
 
 <div class="container">
     <h1>Bienvenue <?= $user['username'] ?></h1>

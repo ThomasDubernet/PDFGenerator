@@ -20,6 +20,17 @@ class User extends Controller {
     }
 
     /**
+     * Deconnexion + retour à l'acceuil
+     *
+     * @return void
+     */
+    public function logout(){
+        $pageTitle = "Accueil";
+        $destroy = true;
+        \Renderer::render("index", compact('pageTitle', 'destroy'));
+    }
+
+    /**
      * Page d'inscription
      *
      * @return void
@@ -80,15 +91,10 @@ class User extends Controller {
 
         
         $user = serialize($this->model->verify($username, $password));
-        // var_dump($user);
 
-        // \Http::redirect("index.php?controller=user&task=dashboard");
         $pageTitle = "Dashboard";
-        \Renderer::render("dashboard/index", compact('pageTitle', 'user'));
+        $userID = $this->model->verify($username, $password)['id'];
+        \Renderer::render("dashboard/index", compact('pageTitle', 'user', 'userID'));
     }
 
-    // public function dashboard(){
-    //     $pageTitle = "Dashboard";
-    //     \Renderer::render("dashboard/index", compact('pageTitle'));
-    // }
 }

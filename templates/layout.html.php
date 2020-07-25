@@ -7,6 +7,41 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <?= $pageContent ?>
+
+<?php
+    session_start();
+    if(isset($destroy)){
+        session_unset();
+        session_destroy();
+    }
+    if(isset($userID)){
+        $_SESSION['id'] = $userID;
+    } else {
+        $user = null;
+    }
+?>
+    <div class="content">
+        <div class="navbar">
+            <?php if(!isset($_SESSION['id'])) :?>
+                
+                <ul class="list-unstyled list-btn">
+                    <li class="btn-user"><a href="index.php?controller=user&task=sign">Inscrition</a></li>
+                    <li class="btn-user"><a href="index.php?controller=user&task=login">Connexion</a></li>
+                </ul>
+            <?php  else : ?>
+                <ul class="list-unstyled list-btn">
+                    <li class="btn-user"><h2><?php if($user != null){ echo($user['username']);} ?></h2></li>
+                    <li class="btn-user"><a href="index.php?controller=user&task=logout">Déconnexion</a></li>
+                </ul>
+                <h3 class="title-navbar">Clients</h3>
+                <a href="" class="btn-new">Nouveau</a>
+                <h3 class="title-navbar">Devis</h3>
+                <a href="" class="btn-new">Nouveau</a>
+                <h3 class="title-navbar">Factures</h3>
+                <a href="" class="btn-new">Nouveau</a>
+            <?php endif; ?>
+        </div>
+        <div id="content"><?= $pageContent ?></div>
+    </div>
 </body>
 </html>
