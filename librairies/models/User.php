@@ -19,6 +19,13 @@ class User extends Model {
         $query->execute(compact('username', 'email', 'password'));
     }
 
+/**
+ * vérifie que l'utilisateur existe
+ *
+ * @param string $username
+ * @param string $password
+ * @return array
+ */
     public function verify(string $username, string $password): array{
         $query = $this->pdo->prepare('SELECT * FROM users WHERE username = :username AND password = :password');
         $query->execute(['username' => $username, 'password' => $password]);

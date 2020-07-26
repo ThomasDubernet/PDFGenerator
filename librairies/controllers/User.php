@@ -77,8 +77,6 @@ class User extends Controller {
     }
 
     public function verify(){
-        $pageTitle = "Dashboard";
-
         $username = null;
         if(!empty($_POST['username'])){
             $username = $_POST['username'];
@@ -89,12 +87,11 @@ class User extends Controller {
             $password = $_POST['password'];
         }
 
-        
-        $user = serialize($this->model->verify($username, $password));
+        $user = $this->model->verify($username, $password);
 
         $pageTitle = "Dashboard";
-        $userID = $this->model->verify($username, $password)['id'];
-        \Renderer::render("dashboard/index", compact('pageTitle', 'user', 'userID'));
+        $connect = true;
+        \Renderer::render("dashboard/index", compact('pageTitle', 'user', 'connect'));
     }
 
 }
