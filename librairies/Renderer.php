@@ -4,16 +4,12 @@ class Renderer {
     public static function render(string $path, array $variables = []) {
 
         extract($variables);
-        session_start();
+        \Session::start();
         if(isset($connect)){
-            session_id();
-            $_SESSION['id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['email'] = $user['email'];
+            \Session::startWithID($user);
         }
         if(isset($destroy)){
-            session_unset();
-            session_destroy();
+            \Session::destroy();
         }
         ob_start();
         require('templates/' . $path . '.html.php');

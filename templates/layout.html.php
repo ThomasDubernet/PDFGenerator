@@ -4,29 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>T4Code - <?= $pageTitle ?></title>
+    <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
     <div class="content">
-        <div class="navbar">
+        <div class="navbar navbar-light bg-light">
             <?php if(!isset($_SESSION['id'])) :?>
                 
-                <ul class="list-unstyled list-btn">
-                    <li class="btn-user"><a href="index.php?controller=user&task=sign">Inscrition</a></li>
-                    <li class="btn-user"><a href="index.php?controller=user&task=login">Connexion</a></li>
+                <ul class="navbar-nav list-btn">
+                    <li class="nav-item my-2">
+                        <form action="index.php?controller=user&task=sign" method="post">
+                            <button class="btn btn-outline-info" type="submit">Inscription</button>
+                        </form>
+                    </li>
+                    <li class="nav-item my-2">
+                        <form action="index.php?controller=user&task=login" method="post">
+                            <button class="btn btn-outline-success" type="submit">Connexion</button>
+                        </form>
+                    </li>
                 </ul>
             <?php  else : ?>
-                <ul class="list-unstyled list-btn">
-                    <li class="btn-user"><h2><?php if(isset($_SESSION['username'])){ echo($_SESSION['username']);} ?></h2></li>
-                    <li class="btn-user"><a href="index.php?controller=user&task=logout">Déconnexion</a></li>
+                <ul class="navbar-nav list-btn h-100">
+                    <li class="nav-item"><h2><?php if(isset($_SESSION['username'])){ echo(ucfirst($_SESSION['username']));} ?></h2></li>
+                    <li class="nav-item"><a href="index.php?controller=dashboard&task=index&id=<?= $_SESSION['id'] ?>" class="navlink">Accueil</a></li>
+                    <li class="nav-item mt-auto">
+                        <form action="index.php?controller=user&task=logout" method="post">
+                            <button class="btn btn-outline-danger" type="submit">Déconnexion</button>
+                        </form>
+                    </li>
                 </ul>
-                <h3 class="title-navbar">Clients</h3>
-                <a href="index.php?controller=client&task=add" class="btn-new">Nouveau</a>
-                <h3 class="title-navbar">Devis</h3>
-                <a href="" class="btn-new">Nouveau</a>
-                <h3 class="title-navbar">Factures</h3>
-                <a href="" class="btn-new">Nouveau</a>
             <?php endif; ?>
         </div>
         <div id="content"><?= $pageContent ?></div>

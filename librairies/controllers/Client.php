@@ -89,4 +89,23 @@ class Client extends Controller {
         \Renderer::render("dashboard/index", compact('pageTitle', 'clients'));
 
     }
+
+    public function show(){
+
+        $client_id = null;
+        if (empty($_GET['client_id']) || !ctype_digit($_GET['client_id'])) {
+            die("Ho ! Fallait préciser le paramètre id en GET !");
+        }
+        $client_id = $_GET['client_id'];
+
+        if (!$client_id) {
+            die("Vous devez préciser un paramètre `id` dans l'URL !");
+        }
+
+        $client = $this->model->find($client_id);
+
+        $pageTitle = $client['entreprise'];
+
+        \Renderer::render('dashboard/show-client', compact('pageTitle', 'client'));
+    }
 }

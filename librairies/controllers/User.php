@@ -88,6 +88,8 @@ class User extends Controller {
         }
 
         $user = $this->model->verify($username, $password);
+        $id = $user['id'];
+
 
         $pageTitle = "Dashboard";
         $connect = true;

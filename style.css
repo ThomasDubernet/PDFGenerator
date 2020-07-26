@@ -1,76 +1,57 @@
+/* Reset & preset */
 body, html {
     margin: 0;
     padding: 0;
     max-width: 100%;
 }
+a.nav-link{
+    color: #fff;
+}
+a.nav-link:hover{
+    color: #fff;
+    text-decoration: none;
+}
 .content{
     display: flex;
     width: 100%;
 }
+section{
+    margin: 3rem 0;
+}
+
+/* Header */
 .navbar{
-    width: 10%;
+    width: 15%;
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
-    background: #ebebeb;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
 }
 .title-navbar{
     font-weight: 500;
     text-decoration: underline;
-    padding: 0 0 10px 25px;
+    /* padding: 0 0 10px 25px; */
 }
-.btn-new{
-    margin: 0 auto;
-    padding: 5px;
-    background: rgb(41, 41, 170);
-    border-radius: 3px;
-    border: 1px solid black;
-    color: #fff;
-    text-decoration: none;
-}
-.btn-new:hover{
-    background: rgb(93, 93, 187);
+.btn:hover{
     transform: scale(1.1);
 }
 #content{
-    width: 90%;
+    width: 85%;
     margin-left: auto;
-}
-.list-unstyled{
-    padding-left: 0;
-    list-style: none;
 }
 .list-unstyled.list-btn{
     margin: 0 auto;
-}
-.container{
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
 }
 .flex-btn{
     display: flex;
     justify-content: center;
 }
-.btn-user{
-    margin: 10px;
-}
+
+/* Formulaires */
 .form-group{
     margin: 10px 0;
-}
-
-label {
-    display: inline-block;
-    margin-bottom: .5rem;
-}
-.form-control{
-    display: block;
-    width: 100%;
 }
 .form-connexion{
     display: flex;
@@ -91,4 +72,12 @@ label {
     border: 1px solid black;
     border-radius: 5px;
     margin: 10px;
+}
+
+/* Cards */
+.card-client{
+    margin: 1.5rem;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 12px;
 }

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="box-form">
         <div class="form-add">
-            <h2>Ajouter un client</h2>
+            <h2 class="text-primary">Ajouter un client</h2>
         
             <form action="index.php?controller=client&task=insert" method="post">
                 <div class="form-group">
@@ -38,7 +38,7 @@
                 </div>
                 <input type="hidden" name="user_id" value="<?= $_SESSION['id'] ?>">
                 <div class="d-flex justify-content-center">
-                    <button type="submit"  name="submit">Ajouter</button>
+                    <button class="btn btn-primary" type="submit"  name="submit">Ajouter</button>
                 </div>
             </form>
         </div>
