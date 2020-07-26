@@ -4,8 +4,11 @@ namespace Controllers;
 
 class Facture {
     
-    public function insert(){
-
+    protected $modelName = \Models\Facture::class;
+    
+    public function new(){
+        $pageTitle = "Nouvelle Facture";
+        \Renderer::render('dashboard/add-facture', compact('pageTitle'));
     }
 
     public function change(){

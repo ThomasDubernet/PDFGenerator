@@ -43,7 +43,7 @@
         <div class="row py-2 bg-light">
             <div class="container d-flex align-items-center">
                 <h3>Devis</h3>
-                <form class="ml-auto" action="index.php?controller=devis&task=add" method="post">
+                <form class="ml-auto" action="index.php?controller=devis&task=new&user_id=<?= $_SESSION['id'] ?>" method="post">
                     <button class="btn btn-outline-success" type="submit">New</button>
                 </form>
             </div>
@@ -54,7 +54,7 @@
         <div class="row py-2 bg-light">
             <div class="container d-flex align-items-center">
                 <h3>Factures</h3>
-                <form class="ml-auto" action="index.php?controller=facture&task=add" method="post">
+                <form class="ml-auto" action="index.php?controller=facture&task=new&user_id=<?= $_SESSION['id'] ?>" method="post">
                     <button class="btn btn-outline-success" type="submit">New</button>
                 </form>
             </div>

@@ -15,8 +15,20 @@
         <!-- <div class="form-group">
             <input type="password" name="pass2" placeholder="Confirm password" />
         </div> -->
+        <div class="form-group">
+            <input type="text" name="adresse" placeholder="Adresse" />
+        </div>
+        <div class="form-group">
+            <input type="text" name="zip" placeholder="Code postal" />
+        </div>
+        <div class="form-group">
+            <input type="text" name="ville" placeholder="Ville" />
+        </div>
+        <div class="form-group">
+            <input type="text" name="siret" placeholder="N° de siret" />
+        </div>
         <div class="d-flex justify-content-center">
-            <button type="submit"  name="submit">Inscription</button>
+            <button type="submit" class="btn btn-primary" name="submit">Inscription</button>
         </div>
     </form>
 

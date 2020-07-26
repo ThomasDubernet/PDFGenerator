@@ -70,8 +70,28 @@ class User extends Controller {
         if(!empty($_POST['password'])){
             $password = $_POST['password'];
         }
+        
+        $adresse = null;
+        if(!empty($_POST['adresse'])){
+            $adresse = $_POST['adresse'];
+        }
+        
+        $zip = null;
+        if(!empty($_POST['zip'])){
+            $zip = $_POST['zip'];
+        }
+        
+        $ville = null;
+        if(!empty($_POST['ville'])){
+            $ville = $_POST['ville'];
+        }
+        
+        $siret = null;
+        if(!empty($_POST['siret'])){
+            $siret = $_POST['siret'];
+        }
 
-        $this->model->insert($username, $email, $password);
+        $this->model->insert($username, $email, $password, $adresse, $zip, $ville, $siret);
 
         \Http::redirect("index.php?controller=user&task=login");
     }
@@ -93,7 +113,8 @@ class User extends Controller {
 
         $pageTitle = "Dashboard";
         $connect = true;
-        \Renderer::render("dashboard/index", compact('pageTitle', 'user', 'connect'));
+        \Session::startWithID($user);
+        \Http::redirect("index.php?controller=dashboard&task=index&id=" . $id);
     }
 
 }

@@ -12,6 +12,7 @@ class Session {
     }
 
     public static function startWithID(array $user){
+        self::start();
         session_id();
         $_SESSION['id'] = $user['id'];
         $_SESSION['username'] = $user['username'];

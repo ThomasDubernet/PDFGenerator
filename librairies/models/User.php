@@ -14,9 +14,9 @@ class User extends Model {
      * @param string $password
      * @return void
      */
-    public function insert(string $username, string $email, $password): void{
-        $query = $this->pdo->prepare('INSERT INTO users SET username = :username, email = :email, password = :password');
-        $query->execute(compact('username', 'email', 'password'));
+    public function insert(string $username, string $email, string $password, string $adresse, int $zip, string $ville, int $siret): void{
+        $query = $this->pdo->prepare('INSERT INTO users SET username = :username, email = :email, password = :password, adresse = :adresse, zip = :zip, ville = :ville, siret = :siret');
+        $query->execute(compact('username', 'email', 'password', 'adresse', 'zip', 'ville', 'siret'));
     }
 
 /**
