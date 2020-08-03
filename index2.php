@@ -4,9 +4,9 @@ $conf = [
     'id' => '1',
     'facture_id' => '1',
     'dir' => null,
-    'siret' => '000 000 000 00000',
-    'adresse' => 'Mon adresse Ici ave des espace Par exemple !',
-    'name' => 'Votre nom'
+    'siret' => '879 724 342 00016',
+    'adresse' => '25 rue aliénor d\'aquitaine',
+    'name' => 'Thomas Dubernet'
 ];
 
 $p = [
@@ -71,6 +71,11 @@ ob_start();
     }
     tr.black{
         vertical-align: middle;
+    }
+    hr{
+        height: 1px;
+        background: #000000;
+        border: none;
     }
 
 </style>
@@ -144,7 +149,7 @@ ob_start();
     try{
         $pdf = new Html2Pdf('p', 'A4', 'fr');
         $pdf->writeHTML($content);
-        $pdf->output('test.pdf');
+        $pdf->output('test.pdf', 'I');
     }
     catch(Html2PdfException $e){
         die($e);
