@@ -104,71 +104,6 @@ ob_start();
 </style>
 
 <page>
-
-    <page_footer>
-        <table class="paiement">
-            <tr>
-                <td style="width: 25%;">
-                    <h5>Nature du paiement |</h5>
-                </td>
-
-                <td class="flex" style="width: 75%;">
-                    <hr />
-                    <table>
-                        <tr>
-                            <td style="width:60%;">Date de validité du devis :</td>
-                            <td style="width:20%;"><?php $dateValid->modify('+1 month'); echo $dateValid->format('d/m/y') ?></td>
-                            <td style="width:20%;"></td>
-                        </tr>
-
-                        <tr>
-                            <td>-</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td style="width:60%;"><strong>Total hors taxe:</strong></td>
-                            <td style="width:20%;"></td>
-                            <td style="width:20%; text-align:right;">300, 00€</td>
-                        </tr>
-                        <tr>
-                            <td style="width:60%;">TVA non applicable - article 293 B du CGI</td>
-                            <td style="width:20%;"></td>
-                            <td style="width:20%;"></td>
-                        </tr>
-                    </table>
-                    
-                    <hr />
-                    
-                    <table>
-                        <tr>
-                            <td class="t-6" style="width:60%;">
-                            <em>Conditions de règlement à 30 jours date de facture. Aucun escompte en cas de paiement anticipé.
-                                    Possibilité de paiement en plusieurs fois établit avec le client avant signature de ce contrat.</em> <br><br>
-                                    <strong>Mise en production directement à compter de la réception du devis dûment signé.
-                                            A la validation du devis, un acompte de 30% vous sera demandé.</strong>
-                            </td>
-                            <td style="width:40%;"></td>
-                        </tr>
-                    </table>
-                    
-                    <hr />
-                    
-                    <table>
-                        <tr>
-                            <td style="width:60%;">
-                                <strong>BIC : CMCIFRP1MON - IBAN : FR76 1469 0000 0154 0000 3385 844</strong>
-                            </td>
-                            <td style="width:20%;">Bon pour accord le :</td>
-                            <td style="width:20%; text-align:right;"><strong>Signature</strong></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-    </page_footer>
-
     <page_header backtop="25mm">
         <table>
             <tr>
@@ -276,6 +211,70 @@ ob_start();
         <?php break; ?>
         <?php endswitch; ?>
     </page_header>
+
+    <page_footer>
+        <table class="paiement">
+            <tr>
+                <td style="width: 20%;">
+                    <h5>Nature du paiement |</h5>
+                </td>
+
+                <td class="flex" style="width: 80%;">
+                    <hr />
+                    <table>
+                        <tr>
+                            <td style="width:60%;">Date de validité du devis :</td>
+                            <td style="width:20%;"><?php $dateValid->modify('+1 month'); echo $dateValid->format('d/m/y') ?></td>
+                            <td style="width:20%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td style="width:60%;"><strong>Total hors taxe:</strong></td>
+                            <td style="width:20%;"></td>
+                            <td style="width:20%; text-align:right;">300, 00€</td>
+                        </tr>
+                        <tr>
+                            <td style="width:60%;">TVA non applicable - article 293 B du CGI</td>
+                            <td style="width:20%;"></td>
+                            <td style="width:20%;"></td>
+                        </tr>
+                    </table>
+                    
+                    <hr />
+                    
+                    <table>
+                        <tr>
+                            <td class="t-6" style="width:60%;">
+                            <em>Conditions de règlement à 30 jours date de facture. Aucun escompte en cas de paiement anticipé.
+                                    Possibilité de paiement en plusieurs fois établit avec le client avant signature de ce contrat.</em> <br><br>
+                                    <strong>Mise en production directement à compter de la réception du devis dûment signé.
+                                            A la validation du devis, un acompte de 30% vous sera demandé.</strong>
+                            </td>
+                            <td style="width:40%;"></td>
+                        </tr>
+                    </table>
+                    
+                    <hr />
+                    
+                    <table>
+                        <tr>
+                            <td style="width:60%;">
+                                <strong>BIC : CMCIFRP1MON - IBAN : FR76 1469 0000 0154 0000 3385 844</strong>
+                            </td>
+                            <td style="width:20%;">Bon pour accord le :</td>
+                            <td style="width:20%; text-align:right;"><strong>Signature</strong></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </page_footer>
 </page>
 
 
@@ -289,7 +288,7 @@ ob_start();
         $pdf = new Html2Pdf('p', 'A4', 'fr');
         $pdf->writeHTML($content);
         // die($content);
-        $pdf->output('test.pdf', 'I');
+        $pdf->output($_SERVER['DOCUMENT_ROOT'] . '/devis/test.pdf', 'F');
     }
     catch(Html2PdfException $e){
         die($e);

@@ -3,6 +3,11 @@
         <h2 class="text-center text-primary">Nouveau devis</h2>
     </section>
 
+    <embed 
+    src="/devis/test.pdf"
+    width="70%" height="500"
+    type='application/pdf'/>
+
     <?php if(isset($clients)) : ?>
         <form action="" method="post">
             <div class="form-group">
