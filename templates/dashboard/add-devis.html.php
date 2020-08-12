@@ -38,7 +38,8 @@
     try{
         $pdf = new Html2Pdf('p', 'A4', 'fr');
         $pdf->writeHTML($content);
-        $pdf->output('test.pdf');
+        die($content);
+        // $pdf->output('test.pdf');
     }
     catch(Html2PdfException $e){
         die($e);

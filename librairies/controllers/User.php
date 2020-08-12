@@ -90,8 +90,23 @@ class User extends Controller {
         if(!empty($_POST['siret'])){
             $siret = $_POST['siret'];
         }
+        
+        $site = null;
+        if(!empty($_POST['site'])){
+            $site = $_POST['site'];
+        }
+        
+        $number = null;
+        if(!empty($_POST['number'])){
+            $number = $_POST['number'];
+        }
+        
+        $social = null;
+        if(!empty($_POST['social'])){
+            $social = $_POST['social'];
+        }
 
-        $this->model->insert($username, $email, $password, $adresse, $zip, $ville, $siret);
+        $this->model->insert($username, $email, $password, $adresse, $zip, $ville, $siret, $site, $number, $social);
 
         \Http::redirect("index.php?controller=user&task=login");
     }
