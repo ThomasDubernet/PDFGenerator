@@ -39,5 +39,8 @@
         </div>
         <div id="content"><?= $pageContent ?></div>
     </div>
+
+<!-- Scripts -->
+<script src="js/app.js"></script>
 </body>
 </html>
