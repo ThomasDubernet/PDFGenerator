@@ -5,12 +5,27 @@ namespace Models;
 class Client extends Model {
     protected $table = "clients";
 
+    /**
+     * Trouver tous les clients d'un utilisateur
+     *
+     * @param integer $user_id
+     * @return void
+     */
     public function findAll(int $user_id){
         $query = $this->pdo->prepare("SELECT * FROM clients WHERE user_id = :user_id");
         $query->execute(['user_id' => $user_id]);
         $clients = $query->fetchAll();
 
         return $clients;
+    }
+    
+    
+    public function findByName(string $entreprise){
+        $query = $this->pdo->prepare("SELECT * FROM clients WHERE entreprise = :entreprise");
+        $query->execute(['entreprise' => $entreprise]);
+        $client = $query->fetch();
+
+        return $client;
     }
 
     /**

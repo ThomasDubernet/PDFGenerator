@@ -16,7 +16,7 @@ class Dashboard extends Controller {
         $clients = $clientModel->findAll($this->user_id);
         
         // $devisModel = new \Models\Devis();
-        // $devis = $devisModel->findAll($user_id);
+        // $devis = $devisModel->findAll($this->user_id);
         
         // $factureModel = new \Models\Facture();
         // $factures = $factureModel->findAll($user_id);

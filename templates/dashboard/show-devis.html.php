@@ -1,5 +1,9 @@
 <?php
 
+$user = unserialize($user_infos);
+$client = unserialize($client_infos);
+$taches = unserialize($taches);
+
 $conf = [
     "work" => 'dev'
 ];
@@ -43,21 +47,21 @@ ob_start();
         <table>
             <tr>
                 <td style="width: 40%; text-align:center;">
-                    <strong class="t-15">Thomas Dubernet</strong>
+                    <strong class="t-15"><?= $user['username'] ?></strong>
                 </td>
                 <td class="t-11" style="width: 30%">
                     Développeur web & mobile.<br>
                     -<br>
                     Contact<br>
-                    +33 (0)6 11 90 59 49<br>
-                    contact@t4code.fr
+                    <?= $user['number'] ?><br>
+                    <?= $user['email'] ?>
                 </td>
                 <td class="t-11" style="width: 30%">
                     Siret : 879 724 342 00016<br>
                     -<br>
                     Networks<br>
-                    t4code.fr<br>
-                    linkedin.com/in/thomas-dubernet
+                    <?= $user['site'] ?><br>
+                    <?= $user['social'] ?>
                 </td>
             </tr>
         </table>
@@ -69,17 +73,17 @@ ob_start();
                 </td>
                 <td style="font-size: 8pt;width: 20%;">
                     <strong style="font-size: 8pt;">
-                    Stéphane martin<br>
-                    SOLutions+
+                    <?= $client['prenom'] . ' ' . $client['nom'] ?><br>
+                    <?= $client['entreprise'] ?>
                     </strong><br>
                     -<br>
                     Contact<br>
-                    +33 (0)6 11 90 59 49<br>
-                    contact@t4code.fr
+                    <?= $client['telephone'] ?><br>
+                    <?= $client['email'] ?>
                 </td>
                 <td style="font-size: 8pt;width: 20%">
-                    235 Allée Isaac Newton<br>
-                    33127 Saint Jean D'Illac
+                    <?= $client['adresse'] ?><br>
+                    <?= $client['zip'] . ' ' . $client['ville'] ?>
                 </td>
                 <td style="font-size: 12pt;width: 20%; text-align: right;">
                     <strong class="t-11">Devis n°<?= str_replace('/', '', date('d/m/y')) ?> </strong>
@@ -120,28 +124,37 @@ ob_start();
             </table>
         <?php break; case "dev": ?>
             <table style="width:100%; margin-top: 10mm;">
-                <tr>
-                    <td style="width: 20%;">
-                        Nature de la prestation |
-                    </td>
+                <?php foreach($taches as $key => $tache) : ?>
 
-                    <td style="width:60%;">
-                        <strong>-<br>
-                        Web Design | Maquetage</strong>
-                        <ul class="list-work">
-                            <li>Choix typo</li>
-                            <li>Choix colorimétrique</li>
-                            <li>Choix images</li>
-                            <li>Web design de chaque pages</li>
-                        </ul>
-                    </td>
+                    <tr>
+                        <td style="width: 20%;">
+                            <?php 
+                            if($key == 0){echo "Nature de la prestation |";} 
+                            
+                            ?>
+                        </td>
 
-                    <td style="width:20%;text-align: right;">
-                    <br>
-                        300, 00€<br>
-                        1 jr
-                    </td>
-                </tr>
+
+                        <td style="width:60%;">
+                            <strong>-<br>
+                            <?= $tache ?></strong>
+                            <ul class="list-work">
+                                <li>Choix typo</li>
+                                <li>Choix colorimétrique</li>
+                                <li>Choix images</li>
+                                <li>Web design de chaque pages</li>
+                            </ul>
+                        </td>
+
+
+                        <td style="width:20%;text-align: right;">
+                        <br>
+                            300, 00€<br>
+                            1 jr
+                        </td>
+                    </tr>
+
+                <?php endforeach; ?>
             </table>
         <?php break; ?>
         <?php endswitch; ?>
@@ -223,20 +236,20 @@ ob_start();
         $pdf = new Html2Pdf('p', 'A4', 'fr');
         $pdf->writeHTML($content);
         // die($content);
-        if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/devis/test.pdf')) {
-            unlink($_SERVER['DOCUMENT_ROOT'] . '/devis/test.pdf');
-            $pdf->output($_SERVER['DOCUMENT_ROOT'] . '/devis/test.pdf', 'F');
-        } else {
-            $pdf->output($_SERVER['DOCUMENT_ROOT'] . '/devis/test.pdf', 'F');
-
-        }
-        // exit();
+        $pdf->output($_SERVER['DOCUMENT_ROOT'] . '/devis/' . $devis_name . '.pdf', 'F');
+        
     }
     catch(Html2PdfException $e){
         die($e);
     }
 ?>
 
-<h2>Bonjour voilà le devis</h2>
+<div class="container">
+    <h2 class="text-center"><?= $pageTitle ?></h2>
 
-<embed src="http://localhost:8000/devis/test.pdf" width=800 height=500 type='application/pdf' />
+    <div class="d-flex justify-content-center">
+        <embed class="w-100" height="1000" src="http://localhost:8000/devis/<?= $devis_name ?>.pdf" type='application/pdf' />
+    </div>
+
+    <button>Télécharger</button>
+</div>

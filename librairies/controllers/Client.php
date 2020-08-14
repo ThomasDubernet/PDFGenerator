@@ -5,6 +5,11 @@ namespace Controllers;
 class Client extends Controller {
     protected $modelName = \Models\Client::class;
 
+    /**
+     * Ajoute un client
+     *
+     * @return void
+     */
     public function add(){
         $pageTitle ="Ajouter un client";
         \Renderer::render('dashboard/add-client', compact('pageTitle'));
